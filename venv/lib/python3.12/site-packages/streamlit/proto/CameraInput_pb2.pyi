@@ -24,10 +24,10 @@ import builtins as _builtins
 import sys
 import typing as _typing
 
-if sys.version_info >= (3, 11):
-    from typing import TypeAlias as _TypeAlias, Never as _Never
+if sys.version_info >= (3, 10):
+    from typing import TypeAlias as _TypeAlias
 else:
-    from typing_extensions import TypeAlias as _TypeAlias, Never as _Never
+    from typing_extensions import TypeAlias as _TypeAlias
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
@@ -41,11 +41,13 @@ class CameraInput(_message.Message):
     FORM_ID_FIELD_NUMBER: _builtins.int
     DISABLED_FIELD_NUMBER: _builtins.int
     LABEL_VISIBILITY_FIELD_NUMBER: _builtins.int
+    RESOLUTION_HEIGHT_FIELD_NUMBER: _builtins.int
     id: _builtins.str
     label: _builtins.str
     help: _builtins.str
     form_id: _builtins.str
     disabled: _builtins.bool
+    resolution_height: _builtins.int
     @_builtins.property
     def label_visibility(self) -> _LabelVisibility_pb2.LabelVisibility: ...
     def __init__(
@@ -57,11 +59,14 @@ class CameraInput(_message.Message):
         form_id: _builtins.str = ...,
         disabled: _builtins.bool = ...,
         label_visibility: _LabelVisibility_pb2.LabelVisibility | None = ...,
+        resolution_height: _builtins.int | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["label_visibility", b"label_visibility"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal["_resolution_height", b"_resolution_height", "label_visibility", b"label_visibility", "resolution_height", b"resolution_height"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["disabled", b"disabled", "form_id", b"form_id", "help", b"help", "id", b"id", "label", b"label", "label_visibility", b"label_visibility"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["_resolution_height", b"_resolution_height", "disabled", b"disabled", "form_id", b"form_id", "help", b"help", "id", b"id", "label", b"label", "label_visibility", b"label_visibility", "resolution_height", b"resolution_height"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
-    def WhichOneof(self, oneof_group: _Never) -> None: ...
+    _WhichOneofReturnType__resolution_height: _TypeAlias = _typing.Literal["resolution_height"]  # noqa: Y015
+    _WhichOneofArgType__resolution_height: _TypeAlias = _typing.Literal["_resolution_height", b"_resolution_height"]  # noqa: Y015
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__resolution_height) -> _WhichOneofReturnType__resolution_height | None: ...
 
 Global___CameraInput: _TypeAlias = CameraInput  # noqa: Y015

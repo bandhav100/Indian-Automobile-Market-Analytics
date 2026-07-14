@@ -469,6 +469,23 @@ class Block(_message.Message):
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
         def WhichOneof(self, oneof_group: _Never) -> None: ...
 
+    @_typing.final
+    class Transparent(_message.Message):
+        """A layout-transparent wrapper block. Produces no DOM node — children
+        render directly in the parent container's flex context.
+        """
+
+        DESCRIPTOR: _descriptor.Descriptor
+
+        def __init__(
+            self,
+        ) -> None: ...
+        _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+        def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+        _ClearFieldArgType: _TypeAlias = _Never  # noqa: Y015
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+        def WhichOneof(self, oneof_group: _Never) -> None: ...
+
     VERTICAL_FIELD_NUMBER: _builtins.int
     HORIZONTAL_FIELD_NUMBER: _builtins.int
     COLUMN_FIELD_NUMBER: _builtins.int
@@ -480,6 +497,7 @@ class Block(_message.Message):
     POPOVER_FIELD_NUMBER: _builtins.int
     DIALOG_FIELD_NUMBER: _builtins.int
     FLEX_CONTAINER_FIELD_NUMBER: _builtins.int
+    TRANSPARENT_FIELD_NUMBER: _builtins.int
     ALLOW_EMPTY_FIELD_NUMBER: _builtins.int
     ID_FIELD_NUMBER: _builtins.int
     HEIGHT_CONFIG_FIELD_NUMBER: _builtins.int
@@ -511,6 +529,8 @@ class Block(_message.Message):
     @_builtins.property
     def flex_container(self) -> Global___Block.FlexContainer: ...
     @_builtins.property
+    def transparent(self) -> Global___Block.Transparent: ...
+    @_builtins.property
     def height_config(self) -> _HeightConfig_pb2.HeightConfig: ...
     @_builtins.property
     def width_config(self) -> _WidthConfig_pb2.WidthConfig: ...
@@ -528,15 +548,16 @@ class Block(_message.Message):
         popover: Global___Block.Popover | None = ...,
         dialog: Global___Block.Dialog | None = ...,
         flex_container: Global___Block.FlexContainer | None = ...,
+        transparent: Global___Block.Transparent | None = ...,
         allow_empty: _builtins.bool = ...,
         id: _builtins.str | None = ...,
         height_config: _HeightConfig_pb2.HeightConfig | None = ...,
         width_config: _WidthConfig_pb2.WidthConfig | None = ...,
         autoscroll: _builtins.bool | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["_autoscroll", b"_autoscroll", "_height_config", b"_height_config", "_id", b"_id", "_width_config", b"_width_config", "autoscroll", b"autoscroll", "chat_message", b"chat_message", "column", b"column", "dialog", b"dialog", "expandable", b"expandable", "flex_container", b"flex_container", "form", b"form", "height_config", b"height_config", "horizontal", b"horizontal", "id", b"id", "popover", b"popover", "tab", b"tab", "tab_container", b"tab_container", "type", b"type", "vertical", b"vertical", "width_config", b"width_config"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal["_autoscroll", b"_autoscroll", "_height_config", b"_height_config", "_id", b"_id", "_width_config", b"_width_config", "autoscroll", b"autoscroll", "chat_message", b"chat_message", "column", b"column", "dialog", b"dialog", "expandable", b"expandable", "flex_container", b"flex_container", "form", b"form", "height_config", b"height_config", "horizontal", b"horizontal", "id", b"id", "popover", b"popover", "tab", b"tab", "tab_container", b"tab_container", "transparent", b"transparent", "type", b"type", "vertical", b"vertical", "width_config", b"width_config"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["_autoscroll", b"_autoscroll", "_height_config", b"_height_config", "_id", b"_id", "_width_config", b"_width_config", "allow_empty", b"allow_empty", "autoscroll", b"autoscroll", "chat_message", b"chat_message", "column", b"column", "dialog", b"dialog", "expandable", b"expandable", "flex_container", b"flex_container", "form", b"form", "height_config", b"height_config", "horizontal", b"horizontal", "id", b"id", "popover", b"popover", "tab", b"tab", "tab_container", b"tab_container", "type", b"type", "vertical", b"vertical", "width_config", b"width_config"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["_autoscroll", b"_autoscroll", "_height_config", b"_height_config", "_id", b"_id", "_width_config", b"_width_config", "allow_empty", b"allow_empty", "autoscroll", b"autoscroll", "chat_message", b"chat_message", "column", b"column", "dialog", b"dialog", "expandable", b"expandable", "flex_container", b"flex_container", "form", b"form", "height_config", b"height_config", "horizontal", b"horizontal", "id", b"id", "popover", b"popover", "tab", b"tab", "tab_container", b"tab_container", "transparent", b"transparent", "type", b"type", "vertical", b"vertical", "width_config", b"width_config"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     _WhichOneofReturnType__autoscroll: _TypeAlias = _typing.Literal["autoscroll"]  # noqa: Y015
     _WhichOneofArgType__autoscroll: _TypeAlias = _typing.Literal["_autoscroll", b"_autoscroll"]  # noqa: Y015
@@ -546,7 +567,7 @@ class Block(_message.Message):
     _WhichOneofArgType__id: _TypeAlias = _typing.Literal["_id", b"_id"]  # noqa: Y015
     _WhichOneofReturnType__width_config: _TypeAlias = _typing.Literal["width_config"]  # noqa: Y015
     _WhichOneofArgType__width_config: _TypeAlias = _typing.Literal["_width_config", b"_width_config"]  # noqa: Y015
-    _WhichOneofReturnType_type: _TypeAlias = _typing.Literal["vertical", "horizontal", "column", "expandable", "form", "tab_container", "tab", "chat_message", "popover", "dialog", "flex_container"]  # noqa: Y015
+    _WhichOneofReturnType_type: _TypeAlias = _typing.Literal["vertical", "horizontal", "column", "expandable", "form", "tab_container", "tab", "chat_message", "popover", "dialog", "flex_container", "transparent"]  # noqa: Y015
     _WhichOneofArgType_type: _TypeAlias = _typing.Literal["type", b"type"]  # noqa: Y015
     @_typing.overload
     def WhichOneof(self, oneof_group: _WhichOneofArgType__autoscroll) -> _WhichOneofReturnType__autoscroll | None: ...

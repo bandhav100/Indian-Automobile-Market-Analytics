@@ -213,7 +213,7 @@ class StreamlitInvalidSidebarStateError(LocalizableStreamlitException):
 
     def __init__(self, initial_sidebar_state: str) -> None:
         super().__init__(
-            '`initial_sidebar_state` must be `"auto"`, `"expanded"`, `"collapsed"`, '
+            '`initial_sidebar_state` must be `"auto"`, `"expanded"`, `"collapsed"`, `"locked"`, '
             'or a positive integer for width in pixels (got `"{initial_sidebar_state}"`)',
             initial_sidebar_state=initial_sidebar_state,
         )
@@ -312,6 +312,17 @@ class StreamlitInvalidBindValueError(LocalizableStreamlitException):
             'Invalid `bind` value: "{bind_value}". '
             'Supported values are: `"query-params"` or `None`.',
             bind_value=bind_value,
+        )
+
+
+class StreamlitInvalidPersistStateError(LocalizableStreamlitException):
+    """Exception raised when an invalid value is specified for the persist_state parameter."""
+
+    def __init__(self, persist_state_value: Any) -> None:
+        super().__init__(
+            'Invalid `persist_state` value: "{persist_state_value}". '
+            'Supported values are: `"page"`, `"session"`, or `None`.',
+            persist_state_value=persist_state_value,
         )
 
 
@@ -554,13 +565,6 @@ class BidiComponentUnserializableDataError(LocalizableStreamlitException):
 
 
 # policies
-class StreamlitFragmentWidgetsNotAllowedOutsideError(LocalizableStreamlitException):
-    """Exception raised when the fragment attempts to write to an element outside of its container."""
-
-    def __init__(self) -> None:
-        super().__init__("Fragments cannot write widgets to outside containers.")
-
-
 class StreamlitInvalidFormCallbackError(LocalizableStreamlitException):
     """Exception raised a `on_change` callback is set on any element in a form except for
     the `st.form_submit_button`.

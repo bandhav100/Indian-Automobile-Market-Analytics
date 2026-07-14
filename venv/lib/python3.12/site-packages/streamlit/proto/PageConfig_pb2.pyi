@@ -78,6 +78,12 @@ class PageConfig(_message.Message):
         """Unset distinguishes that config was not provided - on initial call, will
         set to auto as default. Otherwise, inherit value from previous call
         """
+        LOCKED: PageConfig._SidebarState.ValueType  # 4
+        """Sidebar is expanded on desktop with collapse controls hidden.
+        On mobile (narrow viewports), the lock degrades gracefully: the sidebar
+        starts collapsed and can be toggled, avoiding trapping users behind an
+        overlay that covers the main content.
+        """
 
     class SidebarState(_SidebarState, metaclass=_SidebarStateEnumTypeWrapper): ...
     AUTO: PageConfig.SidebarState.ValueType  # 0
@@ -89,6 +95,12 @@ class PageConfig(_message.Message):
     SIDEBAR_UNSET: PageConfig.SidebarState.ValueType  # 3
     """Unset distinguishes that config was not provided - on initial call, will
     set to auto as default. Otherwise, inherit value from previous call
+    """
+    LOCKED: PageConfig.SidebarState.ValueType  # 4
+    """Sidebar is expanded on desktop with collapse controls hidden.
+    On mobile (narrow viewports), the lock degrades gracefully: the sidebar
+    starts collapsed and can be toggled, avoiding trapping users behind an
+    overlay that covers the main content.
     """
 
     @_typing.final

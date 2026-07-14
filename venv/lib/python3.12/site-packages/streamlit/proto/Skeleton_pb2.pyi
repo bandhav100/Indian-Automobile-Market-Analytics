@@ -29,6 +29,11 @@ if sys.version_info >= (3, 10):
 else:
     from typing_extensions import TypeAlias as _TypeAlias
 
+if sys.version_info >= (3, 13):
+    from warnings import deprecated as _deprecated
+else:
+    from typing_extensions import deprecated as _deprecated
+
 DESCRIPTOR: _descriptor.FileDescriptor
 
 @_typing.final
@@ -56,8 +61,24 @@ class Skeleton(_message.Message):
     HEIGHT_FIELD_NUMBER: _builtins.int
     style: Global___Skeleton.SkeletonStyle.ValueType
     """Skeleton visual style"""
-    height: _builtins.int
-    """Height in pixels"""
+    @_builtins.property
+    @_deprecated("""This field has been marked as deprecated using proto field options.""")
+    def height(self) -> _builtins.int:
+        """Deprecated: no longer used. The public st.skeleton() API sizes the skeleton
+        via the element's layout config, and the deprecated internal _skeleton()
+        always renders at the default element height. Retained for wire
+        compatibility; do not reuse this field number.
+        """
+
+    @height.setter
+    @_deprecated("""This field has been marked as deprecated using proto field options.""")
+    def height(self, value: _builtins.int) -> None:
+        """Deprecated: no longer used. The public st.skeleton() API sizes the skeleton
+        via the element's layout config, and the deprecated internal _skeleton()
+        always renders at the default element height. Retained for wire
+        compatibility; do not reuse this field number.
+        """
+
     def __init__(
         self,
         *,

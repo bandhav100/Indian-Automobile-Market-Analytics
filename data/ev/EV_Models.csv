@@ -1,0 +1,29 @@
+brand_name,model_name,category,fuel_type,battery_capacity_kwh,claimed_range_km,motor_power_hp,charging_type,launch_year,discontinue_year,is_active,avg_price_inr,official_source,source_url
+Mahindra,e2o,Hatchback,Battery Electric (BEV),10.0,100,25,AC 3.3 kW (Type 2),2013,2016,No,700000,Mahindra & Mahindra Ltd. - Official Press Release,https://www.mahindra.com/
+Mahindra,e2oPlus,Hatchback,Battery Electric (BEV),12.0,140,30,AC 3.3 kW (Type 2),2016,2019,No,800000,Mahindra & Mahindra Ltd. - Official Press Release,https://www.mahindra.com/
+Mahindra,eVerito,Sedan,Battery Electric (BEV),18.55,140,41,AC 3.3 kW (Type 2),2016,2022,No,1200000,Mahindra & Mahindra Ltd. - Official Press Release,https://www.mahindra.com/
+Tata,Tigor EV,Sedan,Battery Electric (BEV),26.0,315,75,AC 3.3 kW / DC 25 kW CCS2,2019,,Yes,1299000,Tata Motors Ltd. - Official Website,https://ev.tatamotors.com/tigor-ev/
+Tata,Nexon EV,SUV,Battery Electric (BEV),40.5,489,143,AC 7.2 kW / DC 50 kW CCS2,2020,,Yes,1449000,Tata Motors Ltd. - Official Website,https://ev.tatamotors.com/nexon-ev/
+MG,ZS EV,SUV,Battery Electric (BEV),50.3,461,174,AC 7.4 kW / DC 76 kW CCS2,2020,,Yes,1898000,JSW MG Motor India - Official Website,https://www.mgmotor.co.in/zs-ev
+Tata,Tiago EV,Hatchback,Battery Electric (BEV),24.0,315,75,AC 3.3 kW / DC 25 kW CCS2,2022,,Yes,849000,Tata Motors Ltd. - Official Website,https://ev.tatamotors.com/tiago-ev/
+Citroen,eC3,Hatchback,Battery Electric (BEV),29.2,320,57,AC 3.3 kW / DC 30 kW CCS2,2023,,Yes,1299000,Citroen India (Stellantis) - Official Website,https://www.citroen.in/vehicles/new-ec3.html
+BYD,Atto 3,SUV,Battery Electric (BEV),60.48,521,201,AC 7 kW / DC 80 kW CCS2,2022,,Yes,2050000,BYD India - Official Website,https://www.byd.com/in/atto3
+BYD,e6,MPV,Battery Electric (BEV),71.7,520,95,AC 7 kW / DC 60 kW CCS2,2022,,Yes,2950000,BYD India - Official Website,https://www.byd.com/in/e6
+Hyundai,Kona Electric,SUV,Battery Electric (BEV),39.2,452,134,AC 7.2 kW / DC 50 kW CCS2,2019,2023,No,2384000,Hyundai Motor India Ltd. - Official Press Release,https://www.hyundai.com/in/en/
+Mahindra,XUV400,SUV,Battery Electric (BEV),39.4,456,150,AC 7.2 kW / DC 50 kW CCS2,2023,,Yes,1599000,Mahindra & Mahindra Ltd. - Official Website,https://www.mahindraelectricvehicles.com/xuv400
+Tata,Punch EV,SUV,Battery Electric (BEV),35.0,421,122,AC 7.2 kW / DC 50 kW CCS2,2024,,Yes,1099000,Tata Motors Ltd. - Official Website,https://ev.tatamotors.com/punch-ev/
+MG,Comet EV,Hatchback,Battery Electric (BEV),17.3,230,42,AC 3.3 kW / DC 20 kW CCS2,2023,,Yes,799000,JSW MG Motor India - Official Website,https://www.mgmotor.co.in/comet-ev
+BYD,Seal,Sedan,Battery Electric (BEV),82.5,650,308,AC 7 kW / DC 150 kW CCS2,2023,,Yes,4190000,BYD India - Official Website,https://www.byd.com/in/seal
+Hyundai,Ioniq 5,Crossover,Battery Electric (BEV),72.6,631,217,AC 11 kW / DC 350 kW CCS2,2023,,Yes,4665000,Hyundai Motor India Ltd. - Official Website,https://www.hyundai.com/in/en/find-a-car/ioniq-5
+Kia,EV6,Crossover,Battery Electric (BEV),77.4,708,229,AC 11 kW / DC 350 kW CCS2,2022,,Yes,6095000,Kia India - Official Website,https://www.kia.com/in/vehicles/ev6/
+Kia,EV9,SUV,Battery Electric (BEV),99.8,561,379,AC 11 kW / DC 210 kW CCS2,2024,,Yes,12995000,Kia India - Official Website,https://www.kia.com/in/vehicles/ev9/
+MG,Windsor EV,Crossover,Battery Electric (BEV),52.9,449,134,AC 7.4 kW / DC 60 kW CCS2,2024,,Yes,1349500,JSW MG Motor India - Official Website,https://www.mgmotor.co.in/windsor-ev
+Mahindra,BE 6,SUV,Battery Electric (BEV),79.0,683,282,AC 11 kW / DC 175 kW CCS2,2025,,Yes,1890000,Mahindra & Mahindra Ltd. - Official Website,https://www.mahindrabe.com/be-6
+Mahindra,XEV 9e,SUV,Battery Electric (BEV),79.0,656,282,AC 11 kW / DC 175 kW CCS2,2025,,Yes,2190000,Mahindra & Mahindra Ltd. - Official Website,https://www.mahindraxev.com/xev-9e
+Tata,Curvv EV,Crossover,Battery Electric (BEV),45.0,502,167,AC 7.2 kW / DC 70 kW CCS2,2024,,Yes,1749000,Tata Motors Ltd. - Official Website,https://ev.tatamotors.com/curvv-ev/
+Hyundai,Creta Electric,SUV,Battery Electric (BEV),51.4,473,169,AC 11 kW / DC 100 kW CCS2,2025,,Yes,1999000,Hyundai Motor India Ltd. - Official Website,https://www.hyundai.com/in/en/find-a-car/creta-electric
+Maruti Suzuki,e Vitara,SUV,Battery Electric (BEV),61.0,500,172,AC 11 kW / DC 70 kW CCS2,2025,,Yes,1749000,Maruti Suzuki India Ltd. - Official Website,https://www.marutisuzuki.com/e-vitara
+Tata,Harrier EV,SUV,Battery Electric (BEV),65.0,627,250,AC 11 kW / DC 100 kW CCS2,2025,,Yes,2199000,Tata Motors Ltd. - Official Website,https://ev.tatamotors.com/harrier-ev/
+BYD,eMAX 7,MPV,Battery Electric (BEV),55.4,420,161,AC 7 kW / DC 80 kW CCS2,2024,,Yes,2649000,BYD India - Official Website,https://www.byd.com/in/emax7
+Kia,Carens Clavis EV,MPV,Battery Electric (BEV),51.4,490,169,AC 11 kW / DC 100 kW CCS2,2025,,Yes,1899000,Kia India - Official Website,https://www.kia.com/in/vehicles/carens-clavis-ev/
+Tata,Sierra EV,SUV,Battery Electric (BEV),59.0,543,190,AC 11 kW / DC 100 kW CCS2,2026,,Yes,1879000,Tata Motors Ltd. - Official Website,https://ev.tatamotors.com/sierra-ev/

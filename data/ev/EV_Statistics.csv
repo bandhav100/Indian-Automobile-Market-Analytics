@@ -1,0 +1,97 @@
+EV_Statistics — Indian Passenger EV Market Analytics (Recalculated Summary),Unnamed: 1,Unnamed: 2,Unnamed: 3,Unnamed: 4
+All figures below are calculated live with formulas from EV_Models and EV_Monthly_Sales. Data window: launch through 06/2026 (latest available VAHAN month).,,,,
+,,,,
+1. Overview KPIs,,,,
+Total Models Tracked,28,,,
+Active Models (currently on sale),24,,,
+Discontinued Models,4,,,
+Unique Brands,8,,,
+Total Units Sold (All-Time),536570,,,
+Earliest Launch Year,2013,,,
+Latest Sales Data Year,2026,,,
+Average Price — Active Models (INR),2616188,,,
+Average Claimed Range — Active Models (km),498,,,
+,,,,
+2. Total Units Sold by Year,,,,
+Sales Year,Total Units Sold,,,
+2013,120,,,
+2014,850,,,
+2015,650,,,
+2016,600,,,
+2017,900,,,
+2018,850,,,
+2019,850,,,
+2020,4750,,,
+2021,11330,,,
+2022,32650,,,
+2023,72260,,,
+2024,106640,,,
+2025,187250,,,
+2026,116870,,,
+,,,,
+3. Sales & Pricing by Brand,,,,
+Brand,Model Count,Total Units Sold,Avg Price — Active (INR),
+BYD,4,9890,2959750,
+Citroen,1,7300,1299000,
+Hyundai,3,16960,3332000,
+Kia,3,5520,6996333,
+MG,3,86200,1348833,
+Mahindra,6,60200,1893000,
+Maruti Suzuki,1,11900,1749000,
+Tata,7,338600,1503286,
+,,,,
+"4. Sales, Range & Pricing by Body Category",,,,
+Category,Model Count,Total Units Sold,Avg Range (km),Avg Price — Active (INR)
+Crossover,4,73620,573,3464625
+Hatchback,5,72920,221,982333
+MPV,3,6440,477,2499333
+SUV,13,346960,526,2749667
+Sedan,3,36630,368,2744500
+,,,,
+5. Model-wise Total Sales (supporting detail for Top 10 below),,,,
+Brand,Model,Category,Is Active,Total Units Sold
+Mahindra,e2o,Hatchback,No,1920
+Mahindra,e2oPlus,Hatchback,No,1400
+Mahindra,eVerito,Sedan,No,1580
+Tata,Tigor EV,Sedan,Yes,32900
+Tata,Nexon EV,SUV,Yes,161600
+MG,ZS EV,SUV,Yes,16500
+Tata,Tiago EV,Hatchback,Yes,45100
+Citroen,eC3,Hatchback,Yes,7300
+BYD,Atto 3,SUV,Yes,5100
+BYD,e6,MPV,Yes,740
+Hyundai,Kona Electric,SUV,No,760
+Mahindra,XUV400,SUV,Yes,26300
+Tata,Punch EV,SUV,Yes,71000
+MG,Comet EV,Hatchback,Yes,17200
+BYD,Seal,Sedan,Yes,2150
+Hyundai,Ioniq 5,Crossover,Yes,1500
+Kia,EV6,Crossover,Yes,1420
+Kia,EV9,SUV,Yes,300
+MG,Windsor EV,Crossover,Yes,52500
+Mahindra,BE 6,SUV,Yes,17700
+Mahindra,XEV 9e,SUV,Yes,11300
+Tata,Curvv EV,Crossover,Yes,18200
+Hyundai,Creta Electric,SUV,Yes,14700
+Maruti Suzuki,e Vitara,SUV,Yes,11900
+Tata,Harrier EV,SUV,Yes,9000
+BYD,eMAX 7,MPV,Yes,1900
+Kia,Carens Clavis EV,MPV,Yes,3800
+Tata,Sierra EV,SUV,Yes,800
+,,,,
+6. Top 10 Best-Selling Models (All-Time),,,,
+Rank,Brand,Model,Total Units Sold,
+1,Tata,Nexon EV,161600,
+2,Tata,Punch EV,71000,
+3,MG,Windsor EV,52500,
+4,Tata,Tiago EV,45100,
+5,Tata,Tigor EV,32900,
+6,Mahindra,XUV400,26300,
+7,Tata,Curvv EV,18200,
+8,Mahindra,BE 6,17700,
+9,MG,Comet EV,17200,
+10,MG,ZS EV,16500,
+,,,,
+Note: 'Total Units Sold' aggregates all monthly records (official + estimated). See EV_Monthly_Sales.data_quality per record for provenance.,,,,
+,,,,
+Sources: VAHAN Dashboard (https://vahan.parivahan.gov.in/vahan4dashboard/); SIAM Statistics (https://www.siam.in/statistics.aspx?mpgid=8&pgidtrail=13); manufacturer official websites (see EV_Models.source_url).,,,,

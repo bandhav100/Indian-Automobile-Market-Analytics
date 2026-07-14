@@ -65,6 +65,7 @@ class Markdown(_message.Message):
     ELEMENT_TYPE_FIELD_NUMBER: _builtins.int
     HELP_FIELD_NUMBER: _builtins.int
     UNTERMINATED_PARSING_FIELD_NUMBER: _builtins.int
+    HIDE_ANCHORS_FIELD_NUMBER: _builtins.int
     body: _builtins.str
     """Content to display."""
     allow_html: _builtins.bool
@@ -72,6 +73,10 @@ class Markdown(_message.Message):
     help: _builtins.str
     unterminated_parsing: _builtins.bool
     """Enables frontend unterminated markdown completion (via remend) during streaming."""
+    hide_anchors: _builtins.bool
+    """When true, headers within `body` keep their `id` (so URL #anchor deep
+    linking still works) but the visible anchor link icon is not rendered.
+    """
     def __init__(
         self,
         *,
@@ -80,10 +85,11 @@ class Markdown(_message.Message):
         element_type: Global___Markdown.Type.ValueType = ...,
         help: _builtins.str = ...,
         unterminated_parsing: _builtins.bool = ...,
+        hide_anchors: _builtins.bool = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["allow_html", b"allow_html", "body", b"body", "element_type", b"element_type", "help", b"help", "unterminated_parsing", b"unterminated_parsing"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["allow_html", b"allow_html", "body", b"body", "element_type", b"element_type", "help", b"help", "hide_anchors", b"hide_anchors", "unterminated_parsing", b"unterminated_parsing"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 

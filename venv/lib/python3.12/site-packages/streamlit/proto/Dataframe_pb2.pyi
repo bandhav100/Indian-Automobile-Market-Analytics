@@ -27,10 +27,10 @@ import builtins as _builtins
 import sys
 import typing as _typing
 
-if sys.version_info >= (3, 10):
-    from typing import TypeAlias as _TypeAlias
+if sys.version_info >= (3, 11):
+    from typing import TypeAlias as _TypeAlias, Never as _Never
 else:
-    from typing_extensions import TypeAlias as _TypeAlias
+    from typing_extensions import TypeAlias as _TypeAlias, Never as _Never
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
@@ -110,6 +110,26 @@ class Dataframe(_message.Message):
     SINGLE_ROW_REQUIRED: Dataframe.SelectionMode.ValueType  # 6
     """Single row, cannot be cleared (radio-like behavior)."""
 
+    @_typing.final
+    class ButtonClickWidgetsEntry(_message.Message):
+        DESCRIPTOR: _descriptor.Descriptor
+
+        KEY_FIELD_NUMBER: _builtins.int
+        VALUE_FIELD_NUMBER: _builtins.int
+        key: _builtins.str
+        value: _builtins.str
+        def __init__(
+            self,
+            *,
+            key: _builtins.str = ...,
+            value: _builtins.str = ...,
+        ) -> None: ...
+        _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+        def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+        def WhichOneof(self, oneof_group: _Never) -> None: ...
+
     ARROW_DATA_FIELD_NUMBER: _builtins.int
     ID_FIELD_NUMBER: _builtins.int
     COLUMNS_FIELD_NUMBER: _builtins.int
@@ -122,6 +142,7 @@ class Dataframe(_message.Message):
     PLACEHOLDER_FIELD_NUMBER: _builtins.int
     SELECTION_STATE_FIELD_NUMBER: _builtins.int
     SELECTION_DEFAULT_FIELD_NUMBER: _builtins.int
+    BUTTON_CLICK_WIDGETS_FIELD_NUMBER: _builtins.int
     id: _builtins.str
     """The id of the widget, this is required if the dataframe is editable"""
     columns: _builtins.str
@@ -157,6 +178,15 @@ class Dataframe(_message.Message):
     def selection_mode(self) -> _containers.RepeatedScalarFieldContainer[Global___Dataframe.SelectionMode.ValueType]:
         """Activated dataframe selections events"""
 
+    @_builtins.property
+    def button_click_widgets(self) -> _containers.ScalarMap[_builtins.str, _builtins.str]:
+        """Map of column name → widget ID for button column click events.
+        Each ButtonColumn with a key parameter registers a single widget that is
+        shared by all rows of that column (one entry per column, not per row). The
+        clicked row index and button label are sent as part of that widget's value,
+        so a single widget ID per column is sufficient to handle clicks on any row.
+        """
+
     def __init__(
         self,
         *,
@@ -172,10 +202,11 @@ class Dataframe(_message.Message):
         placeholder: _builtins.str | None = ...,
         selection_state: _builtins.str | None = ...,
         selection_default: _builtins.str | None = ...,
+        button_click_widgets: _abc.Mapping[_builtins.str, _builtins.str] | None = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["_placeholder", b"_placeholder", "_row_height", b"_row_height", "_selection_default", b"_selection_default", "_selection_state", b"_selection_state", "arrow_data", b"arrow_data", "placeholder", b"placeholder", "row_height", b"row_height", "selection_default", b"selection_default", "selection_state", b"selection_state"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["_placeholder", b"_placeholder", "_row_height", b"_row_height", "_selection_default", b"_selection_default", "_selection_state", b"_selection_state", "arrow_data", b"arrow_data", "column_order", b"column_order", "columns", b"columns", "disabled", b"disabled", "editing_mode", b"editing_mode", "form_id", b"form_id", "id", b"id", "placeholder", b"placeholder", "row_height", b"row_height", "selection_default", b"selection_default", "selection_mode", b"selection_mode", "selection_state", b"selection_state"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["_placeholder", b"_placeholder", "_row_height", b"_row_height", "_selection_default", b"_selection_default", "_selection_state", b"_selection_state", "arrow_data", b"arrow_data", "button_click_widgets", b"button_click_widgets", "column_order", b"column_order", "columns", b"columns", "disabled", b"disabled", "editing_mode", b"editing_mode", "form_id", b"form_id", "id", b"id", "placeholder", b"placeholder", "row_height", b"row_height", "selection_default", b"selection_default", "selection_mode", b"selection_mode", "selection_state", b"selection_state"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     _WhichOneofReturnType__placeholder: _TypeAlias = _typing.Literal["placeholder"]  # noqa: Y015
     _WhichOneofArgType__placeholder: _TypeAlias = _typing.Literal["_placeholder", b"_placeholder"]  # noqa: Y015

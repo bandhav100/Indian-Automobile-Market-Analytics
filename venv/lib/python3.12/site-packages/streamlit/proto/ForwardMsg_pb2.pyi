@@ -221,6 +221,8 @@ class BackendOperationResponse(_message.Message):
     REQUEST_ID_FIELD_NUMBER: _builtins.int
     ERROR_MSG_FIELD_NUMBER: _builtins.int
     DEFERRED_FILE_FIELD_NUMBER: _builtins.int
+    INSTALL_SKILLS_FIELD_NUMBER: _builtins.int
+    DISMISS_SKILLS_NUDGE_FIELD_NUMBER: _builtins.int
     request_id: _builtins.str
     """Matches the request_id from BackendOperationRequest"""
     error_msg: _builtins.str
@@ -229,18 +231,28 @@ class BackendOperationResponse(_message.Message):
     def deferred_file(self) -> Global___DeferredFileResponsePayload:
         """Response for deferred file requests"""
 
+    @_builtins.property
+    def install_skills(self) -> Global___InstallSkillsResponsePayload:
+        """Response for one-click skills install requests"""
+
+    @_builtins.property
+    def dismiss_skills_nudge(self) -> Global___DismissSkillsNudgeResponsePayload:
+        """Acknowledgement for permanently dismissing the skills nudge"""
+
     def __init__(
         self,
         *,
         request_id: _builtins.str = ...,
         error_msg: _builtins.str = ...,
         deferred_file: Global___DeferredFileResponsePayload | None = ...,
+        install_skills: Global___InstallSkillsResponsePayload | None = ...,
+        dismiss_skills_nudge: Global___DismissSkillsNudgeResponsePayload | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["deferred_file", b"deferred_file", "payload", b"payload"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal["deferred_file", b"deferred_file", "dismiss_skills_nudge", b"dismiss_skills_nudge", "install_skills", b"install_skills", "payload", b"payload"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["deferred_file", b"deferred_file", "error_msg", b"error_msg", "payload", b"payload", "request_id", b"request_id"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["deferred_file", b"deferred_file", "dismiss_skills_nudge", b"dismiss_skills_nudge", "error_msg", b"error_msg", "install_skills", b"install_skills", "payload", b"payload", "request_id", b"request_id"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
-    _WhichOneofReturnType_payload: _TypeAlias = _typing.Literal["deferred_file"]  # noqa: Y015
+    _WhichOneofReturnType_payload: _TypeAlias = _typing.Literal["deferred_file", "install_skills", "dismiss_skills_nudge"]  # noqa: Y015
     _WhichOneofArgType_payload: _TypeAlias = _typing.Literal["payload", b"payload"]  # noqa: Y015
     def WhichOneof(self, oneof_group: _WhichOneofArgType_payload) -> _WhichOneofReturnType_payload | None: ...
 
@@ -266,6 +278,50 @@ class DeferredFileResponsePayload(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___DeferredFileResponsePayload: _TypeAlias = DeferredFileResponsePayload  # noqa: Y015
+
+@_typing.final
+class InstallSkillsResponsePayload(_message.Message):
+    """Response payload for one-click skills install. A successful, empty detail
+    indicates a clean install; failures are reported via the response's
+    error_msg field instead.
+    """
+
+    DESCRIPTOR: _descriptor.Descriptor
+
+    DETAIL_FIELD_NUMBER: _builtins.int
+    detail: _builtins.str
+    """Optional human-readable detail about the install outcome."""
+    def __init__(
+        self,
+        *,
+        detail: _builtins.str = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["detail", b"detail"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___InstallSkillsResponsePayload: _TypeAlias = InstallSkillsResponsePayload  # noqa: Y015
+
+@_typing.final
+class DismissSkillsNudgeResponsePayload(_message.Message):
+    """Acknowledgement payload for dismissing the skills nudge. Carries no data;
+    its presence signals the marker was written successfully.
+    """
+
+    DESCRIPTOR: _descriptor.Descriptor
+
+    def __init__(
+        self,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___DismissSkillsNudgeResponsePayload: _TypeAlias = DismissSkillsNudgeResponsePayload  # noqa: Y015
 
 @_typing.final
 class ForwardMsgMetadata(_message.Message):

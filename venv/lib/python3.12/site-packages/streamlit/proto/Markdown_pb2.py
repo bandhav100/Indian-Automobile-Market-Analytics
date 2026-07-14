@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1estreamlit/proto/Markdown.proto\"\xd8\x01\n\x08Markdown\x12\x0c\n\x04\x62ody\x18\x01 \x01(\t\x12\x12\n\nallow_html\x18\x02 \x01(\x08\x12$\n\x0c\x65lement_type\x18\x04 \x01(\x0e\x32\x0e.Markdown.Type\x12\x0c\n\x04help\x18\x05 \x01(\t\x12\x1c\n\x14unterminated_parsing\x18\x06 \x01(\x08\"R\n\x04Type\x12\x0f\n\x0bUNSPECIFIED\x10\x00\x12\n\n\x06NATIVE\x10\x01\x12\x0b\n\x07\x43\x41PTION\x10\x02\x12\x08\n\x04\x43ODE\x10\x03\x12\t\n\x05LATEX\x10\x04\x12\x0b\n\x07\x44IVIDER\x10\x05J\x04\x08\x03\x10\x04\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1estreamlit/proto/Markdown.proto\"\xee\x01\n\x08Markdown\x12\x0c\n\x04\x62ody\x18\x01 \x01(\t\x12\x12\n\nallow_html\x18\x02 \x01(\x08\x12$\n\x0c\x65lement_type\x18\x04 \x01(\x0e\x32\x0e.Markdown.Type\x12\x0c\n\x04help\x18\x05 \x01(\t\x12\x1c\n\x14unterminated_parsing\x18\x06 \x01(\x08\x12\x14\n\x0chide_anchors\x18\x07 \x01(\x08\"R\n\x04Type\x12\x0f\n\x0bUNSPECIFIED\x10\x00\x12\n\n\x06NATIVE\x10\x01\x12\x0b\n\x07\x43\x41PTION\x10\x02\x12\x08\n\x04\x43ODE\x10\x03\x12\t\n\x05LATEX\x10\x04\x12\x0b\n\x07\x44IVIDER\x10\x05J\x04\x08\x03\x10\x04\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -22,7 +22,7 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'streamlit.proto.Markdown_pb
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
   _globals['_MARKDOWN']._serialized_start=35
-  _globals['_MARKDOWN']._serialized_end=251
-  _globals['_MARKDOWN_TYPE']._serialized_start=163
-  _globals['_MARKDOWN_TYPE']._serialized_end=245
+  _globals['_MARKDOWN']._serialized_end=273
+  _globals['_MARKDOWN_TYPE']._serialized_start=185
+  _globals['_MARKDOWN_TYPE']._serialized_end=267
 # @@protoc_insertion_point(module_scope)

@@ -54,6 +54,29 @@ class ChatInput(_message.Message):
     MULTIPLE: ChatInput.AcceptFile.ValueType  # 2
     DIRECTORY: ChatInput.AcceptFile.ValueType  # 3
 
+    class _SubmitMode:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _SubmitModeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[ChatInput._SubmitMode.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        SUBMIT_MODE_SUBMIT: ChatInput._SubmitMode.ValueType  # 0
+        """Default: widget remains enabled during script execution"""
+        SUBMIT_MODE_DISABLE: ChatInput._SubmitMode.ValueType  # 1
+        """Widget is disabled after submission until script completes"""
+        SUBMIT_MODE_STOP: ChatInput._SubmitMode.ValueType  # 2
+        """Submit button transforms into stop button during script execution"""
+
+    class SubmitMode(_SubmitMode, metaclass=_SubmitModeEnumTypeWrapper):
+        """Controls widget behavior after submission while the script is running"""
+
+    SUBMIT_MODE_SUBMIT: ChatInput.SubmitMode.ValueType  # 0
+    """Default: widget remains enabled during script execution"""
+    SUBMIT_MODE_DISABLE: ChatInput.SubmitMode.ValueType  # 1
+    """Widget is disabled after submission until script completes"""
+    SUBMIT_MODE_STOP: ChatInput.SubmitMode.ValueType  # 2
+    """Submit button transforms into stop button during script execution"""
+
     ID_FIELD_NUMBER: _builtins.int
     PLACEHOLDER_FIELD_NUMBER: _builtins.int
     MAX_CHARS_FIELD_NUMBER: _builtins.int
@@ -66,6 +89,7 @@ class ChatInput(_message.Message):
     MAX_UPLOAD_SIZE_MB_FIELD_NUMBER: _builtins.int
     ACCEPT_AUDIO_FIELD_NUMBER: _builtins.int
     AUDIO_SAMPLE_RATE_FIELD_NUMBER: _builtins.int
+    SUBMIT_MODE_FIELD_NUMBER: _builtins.int
     id: _builtins.str
     placeholder: _builtins.str
     max_chars: _builtins.int
@@ -82,6 +106,7 @@ class ChatInput(_message.Message):
     """Sample rate for audio recording in Hz (e.g., 16000, 48000)
     If not set, uses browser default
     """
+    submit_mode: Global___ChatInput.SubmitMode.ValueType
     @_builtins.property
     def file_type(self) -> _containers.RepeatedScalarFieldContainer[_builtins.str]:
         """Supported file types: For example: ["png","jpg","img"]"""
@@ -101,10 +126,11 @@ class ChatInput(_message.Message):
         max_upload_size_mb: _builtins.int = ...,
         accept_audio: _builtins.bool = ...,
         audio_sample_rate: _builtins.int | None = ...,
+        submit_mode: Global___ChatInput.SubmitMode.ValueType = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["_audio_sample_rate", b"_audio_sample_rate", "audio_sample_rate", b"audio_sample_rate"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["_audio_sample_rate", b"_audio_sample_rate", "accept_audio", b"accept_audio", "accept_file", b"accept_file", "audio_sample_rate", b"audio_sample_rate", "default", b"default", "disabled", b"disabled", "file_type", b"file_type", "id", b"id", "max_chars", b"max_chars", "max_upload_size_mb", b"max_upload_size_mb", "placeholder", b"placeholder", "set_value", b"set_value", "value", b"value"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["_audio_sample_rate", b"_audio_sample_rate", "accept_audio", b"accept_audio", "accept_file", b"accept_file", "audio_sample_rate", b"audio_sample_rate", "default", b"default", "disabled", b"disabled", "file_type", b"file_type", "id", b"id", "max_chars", b"max_chars", "max_upload_size_mb", b"max_upload_size_mb", "placeholder", b"placeholder", "set_value", b"set_value", "submit_mode", b"submit_mode", "value", b"value"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     _WhichOneofReturnType__audio_sample_rate: _TypeAlias = _typing.Literal["audio_sample_rate"]  # noqa: Y015
     _WhichOneofArgType__audio_sample_rate: _TypeAlias = _typing.Literal["_audio_sample_rate", b"_audio_sample_rate"]  # noqa: Y015

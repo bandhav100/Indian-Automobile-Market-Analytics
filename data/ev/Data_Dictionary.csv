@@ -1,0 +1,49 @@
+Data Dictionary — Indian Passenger EV Market Analytics Workbook,Unnamed: 1,Unnamed: 2,Unnamed: 3,Unnamed: 4,Unnamed: 5
+"Scope: officially launched, mainstream, passenger Battery Electric Vehicles (BEVs) sold in India (Hatchback, Sedan, SUV, MPV, Crossover). Excludes two/three-wheelers, buses, trucks, commercial EVs and luxury marques. Designed to load cleanly into PostgreSQL and power a Streamlit analytics dashboard.",,,,,
+,,,,,
+Sheet: EV_Models — one row per unique EV model sold in India,,,,,
+Column,Data Type (PostgreSQL),Description,Example,Nullable,Notes
+brand_name,VARCHAR(50),Manufacturer / OEM brand name,Tata,No,Standardised official brand spelling
+model_name,VARCHAR(100),Model name as officially marketed in India,Nexon EV,No,Trim/variant not included; one row per model nameplate
+category,VARCHAR(20),Body style,SUV,No,"One of: Hatchback, Sedan, SUV, MPV, Crossover"
+fuel_type,VARCHAR(30),Powertrain type,Battery Electric (BEV),No,All rows are BEV — column retained for schema consistency with future PHEV/FCEV additions
+battery_capacity_kwh,"NUMERIC(6,2)",Usable/total battery pack capacity,40.5,Yes,"kWh, manufacturer-claimed"
+claimed_range_km,INTEGER,Manufacturer-claimed range (ARAI/WLTP as applicable),489,Yes,"Kilometres, test-cycle as published by OEM"
+motor_power_hp,INTEGER,Peak motor power output,143,Yes,"Horsepower (PS/hp as marketed, rounded)"
+charging_type,VARCHAR(60),Supported charging standards & max rates,AC 7.2 kW / DC 50 kW CCS2,Yes,Free text; AC/DC rate and connector standard
+launch_year,SMALLINT,Calendar year of official India launch,2020,No,
+discontinue_year,SMALLINT,Calendar year the model was officially discontinued in India,,Yes,Blank/NULL = still on sale
+is_active,BOOLEAN / VARCHAR(3),Whether the model is currently on sale in India,Yes,No,Stored as Yes/No text; cast to boolean on ingest
+avg_price_inr,"NUMERIC(12,2)",Approximate average ex-showroom price,1449000,Yes,"INR; base/mid variant, indicative only"
+official_source,VARCHAR(150),Name of the authoritative source used to verify this row,Tata Motors Ltd. - Official Website,No,
+source_url,VARCHAR(300),URL of the specific source page,https://ev.tatamotors.com/nexon-ev/,No,"Model-specific page, not generic homepage where available"
+,,,,,
+Sheet: EV_Monthly_Sales — one row per model per calendar month,,,,,
+Column,Data Type (PostgreSQL),Description,Example,Nullable,Notes
+brand_name,VARCHAR(50),Manufacturer / OEM brand name,Tata,No,Foreign key to EV_Models.brand_name
+model_name,VARCHAR(100),Model name,Nexon EV,No,Foreign key to EV_Models.model_name (composite key with brand_name)
+sales_year,SMALLINT,Calendar year of the sales record,2024,No,
+sales_month,VARCHAR(9),Calendar month name,October,No,"Full month name, January-December"
+units_sold,INTEGER,Units registered/sold in that brand-model-month,3800,No,"Whole units, >= 0"
+data_quality,VARCHAR(40),Provenance flag for the units_sold figure,Estimated from Official Annual,No,'Official Monthly' when a VAHAN/OEM monthly figure exists as-is; 'Estimated from Official Annual' when a verified annual total was distributed across months using typical Indian PV seasonality
+official_source,VARCHAR(150),Authoritative source of the underlying annual/monthly figure,VAHAN Dashboard (MoRTH),No,
+source_url,VARCHAR(300),URL of the source dashboard/report,https://vahan.parivahan.gov.in/vahan4dashboard/,No,
+,,,,,
+Sheet: EV_Statistics — recalculated summary/KPI sheet (formula-driven),,,,,
+Section,Description,Formula Basis,,,
+Overview KPIs,"Model counts, brand counts, all-time units sold, launch-year span, active-model averages",,,COUNTA / COUNTIF / SUMPRODUCT / SUM / AVERAGEIF over EV_Models & EV_Monthly_Sales,
+Total Units Sold by Year,Units sold aggregated across all models for each calendar year 2013-latest,,,SUMIFS on EV_Monthly_Sales.units_sold by sales_year,
+Sales & Pricing by Brand,"Model count, total units sold, and average active-model price per brand",,,COUNTIF / SUMIF / AVERAGEIFS,
+"Sales, Range & Pricing by Category","Model count, total units sold, average range, average active price per body category",,,COUNTIF / SUMIFS / AVERAGEIF / AVERAGEIFS,
+Model-wise Total Sales (helper),"Supporting detail table: lifetime units sold per individual model, used to drive the Top-10 ranking",,,SUMIFS on EV_Monthly_Sales grouped by brand_name + model_name,
+Top 10 Best-Selling Models,Ranks the 10 highest lifetime-selling models,,,LARGE + INDEX/MATCH against the model-wise helper table,
+,,,,,
+Conventions & Methodology,,,,,
+"• Scope filter: only officially launched, mainstream, India-market passenger BEVs. Two/three-wheelers, buses, trucks, commercial-only EVs, and luxury marques (BMW, Mercedes-Benz, Audi, Porsche, Volvo, Jaguar, MINI, Bentley, Rolls-Royce, Ferrari, Lamborghini, Maserati, Lotus, Tesla) are excluded by design.",,,,,
+• Blank cells represent unavailable/not-applicable data — never the text 'NULL'.,,,,,
+"• All monetary values are in Indian Rupees (INR), stored as plain numerics (no currency symbols) for PostgreSQL compatibility.",,,,,
+"• units_sold reflects VAHAN new-registration volumes, which is the industry-standard proxy for retail sales in India.",,,,,
+"• Where an official monthly registration/wholesale figure is not separately published per model, a verified annual total is distributed across the applicable months using typical Indian passenger-vehicle seasonality (festive-season peak Oct-Dec, monsoon dip Jun-Aug) and flagged data_quality = 'Estimated from Official Annual'.",,,,,
+"• Suggested primary key: EV_Models (brand_name, model_name). Suggested composite key: EV_Monthly_Sales (brand_name, model_name, sales_year, sales_month), with a foreign key back to EV_Models.",,,,,
+"• Recommended PostgreSQL load: staging COPY into TEXT columns, then CAST/TRIM into the typed schema above; trim whitespace and standardise brand/model casing before constraint checks.",,,,,
+• Recommended Streamlit use: EV_Models for spec comparisons/filters; EV_Monthly_Sales for time-series and trend charts; EV_Statistics as a pre-aggregated fallback/reference for KPI tiles.,,,,,

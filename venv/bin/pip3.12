@@ -1,4 +1,4 @@
-#!/home/bandhav/indian-automobile-market-analytics/venv/bin/python3
+#!/home/bandhav/Indian-Automobile-Market-Analytics/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

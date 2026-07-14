@@ -134,6 +134,8 @@ class Initialize(_message.Message):
     SESSION_STATUS_FIELD_NUMBER: _builtins.int
     SESSION_ID_FIELD_NUMBER: _builtins.int
     IS_HELLO_FIELD_NUMBER: _builtins.int
+    RECOMMEND_SKILLS_INSTALL_FIELD_NUMBER: _builtins.int
+    SKILLS_NUDGE_SUPPRESSED_LOCALITY_FIELD_NUMBER: _builtins.int
     session_id: _builtins.str
     """The AppSession.id for this connection's AppSession.
     This is used to associate uploaded files with the client that uploaded
@@ -141,6 +143,21 @@ class Initialize(_message.Message):
     """
     is_hello: _builtins.bool
     """True if the command used to start this app was `streamlit hello`."""
+    recommend_skills_install: _builtins.bool
+    """True when the server wants the frontend to show the "install skills"
+    nudge. Only set in local development when an agent harness is detected,
+    the bundled Streamlit skills are not yet installed, the user has not
+    dismissed the nudge permanently, and the browser is connected directly
+    over a loopback address. Frontend treats an unset value as false.
+    """
+    skills_nudge_suppressed_locality: _builtins.str
+    """Connection-locality class of an otherwise-eligible nudge that was
+    suppressed because the browser is NOT on a direct-loopback connection:
+    "private" (RFC1918/Docker/VM/LAN), "other" (public/relayed), "unknown"
+    (peer IP unavailable/unparseable), or empty when not applicable. Purely for
+    adoption telemetry — it lets us measure how much of the agent-harness
+    audience the conservative loopback gate excludes.
+    """
     @_builtins.property
     def user_info(self) -> Global___UserInfo: ...
     @_builtins.property
@@ -157,10 +174,12 @@ class Initialize(_message.Message):
         session_status: _SessionStatus_pb2.SessionStatus | None = ...,
         session_id: _builtins.str = ...,
         is_hello: _builtins.bool = ...,
+        recommend_skills_install: _builtins.bool = ...,
+        skills_nudge_suppressed_locality: _builtins.str = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["environment_info", b"environment_info", "session_status", b"session_status", "user_info", b"user_info"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["environment_info", b"environment_info", "is_hello", b"is_hello", "session_id", b"session_id", "session_status", b"session_status", "user_info", b"user_info"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["environment_info", b"environment_info", "is_hello", b"is_hello", "recommend_skills_install", b"recommend_skills_install", "session_id", b"session_id", "session_status", b"session_status", "skills_nudge_suppressed_locality", b"skills_nudge_suppressed_locality", "user_info", b"user_info"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 

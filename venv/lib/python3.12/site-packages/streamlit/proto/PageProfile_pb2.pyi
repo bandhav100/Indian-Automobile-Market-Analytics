@@ -73,8 +73,11 @@ class PageProfile(_message.Message):
     def installed_skills(self) -> _containers.RepeatedScalarFieldContainer[_builtins.str]:
         """Streamlit-shipped agent skills detected on the user's system, encoded as
         "<location>:<harness>:<skill>" tokens. Locations are "home" (user home),
-        "app" (directory of the main script), and "repo" (nearest ancestor
-        containing a ``.git`` directory, if different from ``app``). Harnesses
+        "app" (directory of the main script), "repo" (nearest ancestor
+        containing a ``.git`` directory, if different from ``app``), and
+        "project" (the in-app installer's resolved root — the nearest
+        ``.agents``/``.claude`` or ``.git`` ancestor — when different from both
+        ``app`` and ``repo``). Harnesses
         are "agents", "claude", "codex", "cortex", "cursor", "gemini", and
         "opencode" (each uses its own skills directory convention). Skills are
         "developing-with-streamlit" and "finding-streamlit-skills".
