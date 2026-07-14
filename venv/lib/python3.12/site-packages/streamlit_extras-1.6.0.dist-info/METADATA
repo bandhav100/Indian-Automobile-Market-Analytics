@@ -1,0 +1,94 @@
+Metadata-Version: 2.4
+Name: streamlit-extras
+Version: 1.6.0
+Summary: A community-driven collection of useful Streamlit components and utilities that extend Streamlit's functionality.
+Project-URL: Homepage, https://github.com/arnaudmiribel/streamlit-extras
+Project-URL: Bug Tracker, https://github.com/arnaudmiribel/streamlit-extras/issues
+Author-email: Arnaud Miribel <arnaudmiribel@gmail.com>, Zachary Blackwood <zachary@streamlit.io>, Lukas Masuch <lukas.masuch@gmail.com>
+License-Expression: Apache-2.0
+License-File: LICENSE
+Keywords: data,python,streamlit,ui
+Requires-Python: >=3.10
+Requires-Dist: plotly>=5.23.0
+Requires-Dist: streamlit>=1.54.0
+Description-Content-Type: text/markdown
+
+<a href="https://extras.streamlitapp.com" title="Python Version"><img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg"></a><br>
+<a href="https://github.com/arnaudmiribel/streamlit-extras/" title="Python Version"><img src="https://img.shields.io/badge/Python-3.10%2B-blue&style=flat"></a>
+<a href="https://badge.fury.io/py/streamlit-extras"><img src="https://badge.fury.io/py/streamlit-extras.svg" alt="PyPI version" height="18"></a>
+<a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Farnaudmiribel%2Fstreamlit-extras&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=visits&edge_flat=false"/></a>
+
+
+# 🪢 streamlit-extras
+
+
+<strong>A Python library with useful Streamlit extras</strong>
+
+`streamlit-extras` is a Python library putting together useful Streamlit bits of code (<b><i>extras</i></b>).
+
+![CleanShot 2023-10-18 at 14 56 43](https://github.com/arnaudmiribel/streamlit-extras/assets/7164864/14f20cf6-033c-4143-9f29-d0e95bf7dca1)
+
+
+## Highlights
+
+- 📙&nbsp; <b>Discover:</b> Visit our <a href="https://arnaudmiribel.github.io/streamlit-extras/">documentation</a> to discover all extras.
+- ⬇️&nbsp; <b>Install:</b> `streamlit-extras` is a PyPI package with all extras included. Get them all using pip!
+- 🫴&nbsp; <b>Share:</b> Go ahead and share your own extras, it's just [a PR away](https://arnaudmiribel.github.io/streamlit-extras/contributing/)!
+
+## Getting Started
+
+### Installation
+
+```bash
+pip install streamlit-extras
+```
+
+Or with [uv](https://docs.astral.sh/uv/):
+
+```bash
+uv add streamlit-extras
+```
+
+### Usage
+
+Here's an example with one of the easiest extras around, <a href="https://arnaudmiribel.github.io/streamlit-extras/extras/stoggle/">stoggle</a>
+```python
+from streamlit_extras.stoggle import stoggle
+
+stoggle(
+    "Click me!",
+    """🥷 Surprise! Here's some additional content""",
+)
+```
+
+<img src="https://user-images.githubusercontent.com/16867691/192553812-f91c801b-e820-470b-84c6-4563504c6ce5.gif"></img>
+
+## Development
+
+This project uses [uv](https://docs.astral.sh/uv/) for dependency management.
+
+```bash
+# Install uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Clone and setup
+git clone https://github.com/arnaudmiribel/streamlit-extras.git
+cd streamlit-extras
+uv sync
+
+# Run tests
+uv run pytest
+
+# Run the gallery
+uv run streamlit run gallery/streamlit_app.py
+```
+
+## Documentation
+
+Visit <a href="https://arnaudmiribel.github.io/streamlit-extras/">https://arnaudmiribel.github.io/streamlit-extras</a>
+
+## Contribution
+
+PRs are welcome! Guidelines <a href="https://arnaudmiribel.github.io/streamlit-extras/contributing/">here</a>
+
+<sup>README template taken from <a href="https://github.com/LukasMasuch/streamlit-pydantic">LukasMasuch/streamlit-pydantic</a></sup>

@@ -1,0 +1,34 @@
+# CCv2 component manifest for react-based extras
+# Auto-generated during build - do not edit manually!
+
+[project]
+name = "streamlit-extras"
+version = "0.0.1"
+
+[[tool.streamlit.component.components]]
+name = "chartjs_chart"
+asset_dir = "chartjs_chart/frontend/build"
+[[tool.streamlit.component.components]]
+name = "directory_tree"
+asset_dir = "directory_tree/frontend/build"
+[[tool.streamlit.component.components]]
+name = "image_compare_slider"
+asset_dir = "image_compare_slider/frontend/build"
+[[tool.streamlit.component.components]]
+name = "image_crop"
+asset_dir = "image_crop/frontend/build"
+[[tool.streamlit.component.components]]
+name = "json_editor"
+asset_dir = "json_editor/frontend/build"
+[[tool.streamlit.component.components]]
+name = "pagination"
+asset_dir = "pagination/frontend/build"
+[[tool.streamlit.component.components]]
+name = "resizable_columns"
+asset_dir = "resizable_columns/frontend/build"
+[[tool.streamlit.component.components]]
+name = "sigma_graph"
+asset_dir = "sigma_graph/frontend/build"
+[[tool.streamlit.component.components]]
+name = "three_viewer"
+asset_dir = "three_viewer/frontend/build"
