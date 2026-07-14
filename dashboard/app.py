@@ -10,8 +10,8 @@ import streamlit.components.v1 as components
 from sklearn.linear_model import LinearRegression
 from st_aggrid import AgGrid, GridOptionsBuilder
 from st_aggrid.shared import JsCode
-
-
+from ev_analysis import render_ev_analysis
+from reports import render_reports
 APP_ICON_PATH = Path(__file__).parent / "static" / "flags" / "in.png"
 
 
@@ -30,7 +30,7 @@ def get_connection():
 
 
 st.set_page_config(
-    page_title="Indian Automobile Market Analytics",
+    page_title="Indian Passenger Vehicle Market Analytics",
     page_icon=str(APP_ICON_PATH),
     layout="wide"
 )
@@ -1020,18 +1020,17 @@ ORDER BY s.sales_year
     season_cols = st.columns(2)
     with season_cols[0]:
         season_df = monthly_sales.copy()
-        season_df = season_df.set_index("Month").loc[["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]].reset_index()
+        season_df = season_df.set_index("Month").loc[["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]].reset_index()
+
         season_df["Share (%)"] = season_df["Share (%)"].map(lambda value: f"{value:.2f}%")
+
+        season_df = season_df[["Month", "total_sales", "Share (%)", "Quarter"]]
         season_df.columns = ["Month", "Units Sold", "Share (%)", "Quarter"]
         st.dataframe(season_df, use_container_width=True, hide_index=True)
     with season_cols[1]:
-        if ev_sales.empty:
-            st.warning("No direct EV-coded records were found in the current dataset; EV adoption cannot be quantified from the available fields.")
-        else:
-            ev_display = ev_sales.merge(historical_sales, on="sales_year", suffixes=("_ev", "_market"))
-            ev_display["EV Share (%)"] = (ev_display["total_sales_ev"] / ev_display["total_sales_market"] * 100).round(2)
-            ev_display.columns = ["Year", "EV Units", "Market Units", "EV Share (%)"]
-            st.dataframe(ev_display, use_container_width=True, hide_index=True)
+        st.info(
+            "EV adoption analysis has been moved to the dedicated EV Analysis section."
+        )
 
     render_section_heading("Executive Recommendations", "Action")
     recommendations = []
@@ -1060,16 +1059,11 @@ ORDER BY s.sales_year
 
     st.caption("This section is intentionally distinct from the product, brand, category, and trend sections above. It focuses on derived leadership, concentration, segment mix, EV adoption, and strategic actions.")
 
-
-def render_reports(conn):
-    render_section_heading("Reports", "Docs")
-    st.caption("No export controls exist in the current dashboard codebase, so this section only organizes the navigation.")
-
-
 def render_section_anchor(anchor_id):
-    st.markdown(f'<div id="{anchor_id}" class="spa-section-anchor"></div>', unsafe_allow_html=True)
-
-
+    st.markdown(
+        f'<div id="{anchor_id}" class="spa-section-anchor"></div>',
+        unsafe_allow_html=True,
+    )
 def inject_smooth_scroll_script():
     components.html(
         """
@@ -1144,25 +1138,14 @@ def render_sidebar_navigation():
         """
 <style>
 .sidebar-nav-shell {
-    background: linear-gradient(180deg, rgba(13, 18, 28, 0.98) 0%, rgba(8, 11, 18, 0.98) 100%);
-    border: 1px solid rgba(148, 163, 184, 0.10);
-    border-radius: 22px;
-    padding: 18px 16px 14px 16px;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
     position: sticky;
     top: 1rem;
-    max-height: calc(100vh - 2rem);
-    overflow-y: auto;
 }
-
-.sidebar-nav-title {
-    font-size: 1.02rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: #FFFFFF;
-    margin-bottom: 0.9rem;
-}
-
 .sidebar-nav-caption {
     font-size: 0.78rem;
     color: rgba(226, 232, 240, 0.62);
@@ -1237,7 +1220,7 @@ def render_sidebar_navigation():
     )
 
     st.sidebar.markdown('<div class="sidebar-nav-shell">', unsafe_allow_html=True)
-    st.sidebar.markdown('<div class="sidebar-nav-title">Indian Automobile Market</div>', unsafe_allow_html=True)
+    st.sidebar.markdown('<div class="sidebar-nav-title"></div>', unsafe_allow_html=True)
 
     nav_items = [
         ("Dashboard Home", "dashboard-home", "home"),
@@ -1259,11 +1242,6 @@ def render_sidebar_navigation():
 
     st.sidebar.markdown('<div class="sidebar-nav-caption">Indian Automobile Market Analytics</div>', unsafe_allow_html=True)
     st.sidebar.markdown('</div>', unsafe_allow_html=True)
-
-
-def render_ev_analysis(conn):
-    render_section_heading("EV Analysis", "EV")
-    st.info("EV Analysis is reserved as a scroll target in the single-page layout. The current dashboard codebase does not include a dedicated EV dataset or charts, so the existing analytics remain unchanged.")
 
 
 render_sidebar_navigation()
